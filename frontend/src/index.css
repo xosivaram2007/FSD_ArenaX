@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Teko', sans-serif;
+  
+  /* REALISTIC SPORTS THEME: Stadium Slate & Championship Red */
+  --color-indigo-50: #f8fafc;
+  --color-indigo-100: #f1f5f9;
+  --color-indigo-200: #e2e8f0;
+  --color-indigo-300: #cbd5e1;
+  --color-indigo-400: #94a3b8;
+  --color-indigo-500: #dc2626;  /* Replacing primary with heavy Crimson Red */
+  --color-indigo-600: #b91c1c;
+  --color-indigo-700: #991b1b;
+  --color-indigo-800: #7f1d1d;
+  --color-indigo-900: #450a0a;
+  --color-indigo-950: #0f172a; /* Slate background */
+
+  --animate-fade-in-up: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-in: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+}
+
+@layer base {
+  body {
+    @apply transition-colors duration-300 min-h-screen text-slate-900 bg-slate-50 dark:bg-[#0b0f19] dark:text-slate-100 font-sans selection:bg-red-600/30 selection:text-white;
+  }
+  
+  h1, h2, h3, .font-display {
+    @apply uppercase tracking-tight;
+    font-family: 'Teko', sans-serif;
+  }
+}
+
+/* Hard, physical UI elements instead of radioactive glass */
+.glass-panel {
+  @apply bg-white dark:bg-[#121826] border-b border-slate-200 dark:border-slate-800 shadow-sm relative z-40;
+}
+
+.glass-card {
+  @apply bg-white dark:bg-[#121826] border border-slate-200 dark:border-slate-800/80 shadow-md hover:shadow-xl hover:border-red-500/50 dark:hover:border-red-500/50 transition-all duration-200 overflow-hidden;
+}
+
+/* Aggressive sports styling elements */
+.sports-skew-btn {
+  @apply relative overflow-hidden bg-red-600 text-white font-display text-xl tracking-wider uppercase px-8 py-2 transform transition-transform hover:-translate-y-1 hover:shadow-lg hover:shadow-red-900/50 block w-full text-center;
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+}
+
+.premium-gradient-text {
+  @apply font-display text-red-600 dark:text-red-500 tracking-wider uppercase drop-shadow-sm;
+}
+
+.premium-gradient-bg {
+  @apply bg-slate-900 dark:bg-slate-800 text-white border-l-4 border-red-600 shadow-lg;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-slate-100 dark:bg-[#0b0f19];
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-800 hover:bg-red-600 transition-colors;
+}
